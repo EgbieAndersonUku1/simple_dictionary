@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+
+      <form action="{{ url_for('dict_app.translate') }}" method="POST", role="search">
+
+         {{ form.hidden_tag() }}
+        <div class="inner-form">
+
+           <h1> Dictionary</h1>
+
+
+          <div class="row">
+            <div class="input-field first" id="first">
+
+
+              {{ render_field(form.word, **{'class': 'form-group', 'id': 'inputFocus', 'placeholder': 'Enter word to get its translation...'}) }}
+
+
+              <button type="submit" class="btn btn-primary">Find</button>
+            </div>
+
+            {% if word and meaning %}
+                <div class="jumbotron">
+                  <h1 class="display-4">{{ word }}</h1>
+                    <p class="lead">{{ meaning[0] }}</p>
+                     <hr class="my-4">
+
+                </div>
+             {% elif word and not meaning %}
+                 <div class="jumbotron">
+                    <p class="lead">The word {{ word }} could not be found in our database</p>
+                     <hr class="my-4">
+
+                </div>
+            {% endif %}
+
+
+
+          </div>
+
+        </div>
+      </form>
+
+
+{% endblock %}
+
+

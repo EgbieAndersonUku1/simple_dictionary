@@ -1,0 +1,9 @@
+
+USER = "ardit700_student"
+PASSWORD = "ardit700_student"
+HOST = "108.167.140.122"
+DATABASE = "ardit700_pm1database"
+
+SECRET_KEY = "ZNoUlWKhbkR3AHk1DL1oW37LgeHBujGPHmBXdRaxzYh32QsLuoIg_29GtlZove30Prv-dOmNzLkwUPlDJlj3QQ"
+DEBUG = True
+SQLALCHEMY_POOL_RECYCLE=299

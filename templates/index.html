@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+
+{% block body %}
+
+    <form action="{{ url_for('dict_app.translate') }}" method="POST", role="search">
+
+         {{ form.hidden_tag() }}
+        <div class="inner-form">
+
+           <h1> Dictionary</h1>
+
+
+          <div class="row">
+            <div class="input-field first" id="first">
+
+
+              {{ render_field(form.word, **{'class': 'form-group', 'id': 'inputFocus', 'placeholder': 'Enter word to get its translation...'}) }}
+
+
+              <button type="submit" class="btn btn-primary">Find</button>
+            </div>
+
+            {% if meaning %}
+                <div class="jumbotron">
+                  <h1 class="display-4">{{ form.word.data.title() }}</h1>
+                    <p class="lead">{{ meaning[0] }}</p>
+                     <hr class="my-4">
+
+                </div>
+            {% endif %}
+
+            {% if best_matches %}
+                <div class="jumbotron">
+                  {% for best_match in best_matches %}
+                      <h2 class="display-4"><a href="{{ url_for('dict_app.get_word', word=best_match) }}"> {{ best_match }}</a> </h2>
+                  {% endfor %}
+
+                </div>
+            {% endif %}
+
+          </div>
+
+        </div>
+      </form>
+
+
+{% endblock %}
